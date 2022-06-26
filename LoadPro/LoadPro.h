@@ -4,8 +4,7 @@
 #include <string>
 
 
-class LoadPro
-{
+class LoadPro {
 private:
 	std::map<std::string, std::string> pro;
 

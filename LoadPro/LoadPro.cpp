@@ -1,8 +1,9 @@
 #include "LoadPro.h"
+
 #include <vector>
 
-bool LoadPro::load(const char* file)
-{
+
+bool LoadPro::load(const char* file) {
 	std::vector<std::string> lines;
 
 	FILE* flags;
@@ -26,7 +27,7 @@ bool LoadPro::load(const char* file)
 					lines.push_back(std::string(data, last, i - last + 1));
 				}
 				else if (data[i] == '\n') {
-					lines.push_back(std::string(data, last,i - last)); last = i + 1;
+					lines.push_back(std::string(data, last, i - last)); last = i + 1;
 				}
 			}
 		}
@@ -53,23 +54,19 @@ bool LoadPro::load(const char* file)
 	return true;
 }
 
-int LoadPro::size()
-{
+int LoadPro::size() {
 	return (int)this->pro.size();
 }
 
-bool LoadPro::has(const char* key)
-{
+bool LoadPro::has(const char* key) {
 	return this->pro.count(key);
 }
 
-void LoadPro::clear()
-{
+void LoadPro::clear() {
 	this->pro.clear();
 }
 
-int LoadPro::getInt(const char* key, int devalue)
-{
+int LoadPro::getInt(const char* key, int devalue) {
 	if (this->has(key)) {
 		return atoi(this->pro[key].c_str());
 	}
@@ -77,8 +74,7 @@ int LoadPro::getInt(const char* key, int devalue)
 	return devalue;
 }
 
-long long LoadPro::getLong(const char* key, long long devalue)
-{
+long long LoadPro::getLong(const char* key, long long devalue) {
 	if (this->has(key)) {
 		return atoll(this->pro[key].c_str());
 	}
@@ -86,8 +82,7 @@ long long LoadPro::getLong(const char* key, long long devalue)
 	return devalue;
 }
 
-bool LoadPro::getBoolean(const char* key, bool devalue)
-{
+bool LoadPro::getBoolean(const char* key, bool devalue) {
 	if (this->has(key)) {
 		return strcmp(this->pro[key].c_str(), "true") == 0 ? true : false;
 	}
@@ -95,8 +90,7 @@ bool LoadPro::getBoolean(const char* key, bool devalue)
 	return devalue;
 }
 
-double LoadPro::getDouble(const char* key, double devalue)
-{
+double LoadPro::getDouble(const char* key, double devalue) {
 	if (this->has(key)) {
 		return atof(this->pro[key].c_str());
 	}
@@ -104,8 +98,7 @@ double LoadPro::getDouble(const char* key, double devalue)
 	return devalue;
 }
 
-std::string LoadPro::getString(const char* key, std::string devalue)
-{
+std::string LoadPro::getString(const char* key, std::string devalue) {
 	if (this->has(key)) {
 		return this->pro[key];
 	}
